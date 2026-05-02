@@ -4,6 +4,8 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>YP Automotive</title>
+<link rel="icon" href="favicon.ico" type="image/x-icon">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
 <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@200;300;400&display=swap" rel="stylesheet">
 <style>
   *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
@@ -115,7 +117,6 @@
     100% { background-position: -200% center; }
   }
 
-  /* Footer */
   .footer {
     position: absolute;
     bottom: 0;
@@ -148,7 +149,6 @@
     background: var(--silver-dark);
   }
 
-  /* Social icons in footer */
   .socials {
     display: flex;
     gap: 16px;
@@ -162,9 +162,7 @@
     transition: transform 0.3s ease;
   }
 
-  .socials a:hover {
-    transform: scale(1.15);
-  }
+  .socials a:hover { transform: scale(1.15); }
 
   .socials a svg {
     width: 16px;
@@ -173,9 +171,7 @@
     transition: fill 0.3s ease;
   }
 
-  .socials a:hover svg {
-    fill: var(--silver-light);
-  }
+  .socials a:hover svg { fill: var(--silver-light); }
 
   @media (max-width: 600px) {
     .footer {
