@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>YP Automotive — Coming Soon</title>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@200;300;400;600&family=Bebas+Neue&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+  :root {
+    --bg: #0a0a0a;
+    --silver-light: #c8c8c8;
+    --silver-mid: #8a8a8a;
+    --silver-dark: #4a4a4a;
+    --accent: #d4d4d4;
+  }
+
+  body {
+    font-family: 'Outfit', sans-serif;
+    background: var(--bg);
+    color: var(--silver-light);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    position: relative;
+  }
+
+  /* Subtle radial glow behind logo */
+  body::before {
+    content: '';
+    position: absolute;
+    top: 42%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 600px;
+    height: 600px;
+    background: radial-gradient(circle, rgba(180,180,180,0.04) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  /* Grain overlay */
+  body::after {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 100;
+  }
+
+  /* Horizontal pinstripe accents */
+  .pinstripe {
+    position: absolute;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent 0%, rgba(200,200,200,0.08) 30%, rgba(200,200,200,0.08) 70%, transparent 100%);
+  }
+  .pinstripe.top { top: 25%; }
+  .pinstripe.bottom { bottom: 25%; }
+
+  .container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 48px;
+    z-index: 1;
+    animation: fadeUp 1.4s cubic-bezier(0.16, 1, 0.3, 1) both;
+  }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .logo-wrapper {
+    position: relative;
+  }
+
+  .logo-wrapper img {
+    width: min(380px, 70vw);
+    height: auto;
+    filter: brightness(1.05);
+  }
+
+  /* Metallic shimmer sweep */
+  .logo-wrapper::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      105deg,
+      transparent 40%,
+      rgba(255,255,255,0.06) 45%,
+      rgba(255,255,255,0.12) 50%,
+      rgba(255,255,255,0.06) 55%,
+      transparent 60%
+    );
+    animation: shimmer 4s ease-in-out infinite;
+    pointer-events: none;
+  }
+
+  @keyframes shimmer {
+    0%, 100% { transform: translateX(-120%); }
+    50% { transform: translateX(120%); }
+  }
+
+  .divider {
+    width: 60px;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--silver-dark), transparent);
+    animation: fadeUp 1.4s 0.3s cubic-bezier(0.16, 1, 0.3, 1) both;
+  }
+
+  .tagline {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(1.8rem, 4vw, 3rem);
+    letter-spacing: 0.35em;
+    background: linear-gradient(180deg, var(--silver-light) 0%, var(--silver-mid) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: fadeUp 1.4s 0.5s cubic-bezier(0.16, 1, 0.3, 1) both;
+  }
+
+  .sub {
+    font-weight: 200;
+    font-size: clamp(0.85rem, 1.5vw, 1rem);
+    color: var(--silver-dark);
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    animation: fadeUp 1.4s 0.7s cubic-bezier(0.16, 1, 0.3, 1) both;
+  }
+
+  /* Bottom contact bar */
+  .footer {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 28px 40px;
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    font-size: 0.75rem;
+    font-weight: 300;
+    letter-spacing: 0.12em;
+    color: var(--silver-dark);
+    text-transform: uppercase;
+    border-top: 1px solid rgba(200,200,200,0.06);
+    animation: fadeUp 1.4s 0.9s cubic-bezier(0.16, 1, 0.3, 1) both;
+    z-index: 1;
+  }
+
+  .footer a {
+    color: var(--silver-dark);
+    text-decoration: none;
+    transition: color 0.3s ease;
+  }
+  .footer a:hover { color: var(--silver-light); }
+
+  /* Floating corner marks */
+  .corner {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    border-color: rgba(200,200,200,0.08);
+    border-style: solid;
+    z-index: 1;
+  }
+  .corner.tl { top: 32px; left: 32px; border-width: 1px 0 0 1px; }
+  .corner.tr { top: 32px; right: 32px; border-width: 1px 1px 0 0; }
+  .corner.bl { bottom: 70px; left: 32px; border-width: 0 0 1px 1px; }
+  .corner.br { bottom: 70px; right: 32px; border-width: 0 1px 1px 0; }
+</style>
+</head>
+<body>
+
+  <div class="pinstripe top"></div>
+  <div class="pinstripe bottom"></div>
+
+  <div class="corner tl"></div>
+  <div class="corner tr"></div>
+  <div class="corner bl"></div>
+  <div class="corner br"></div>
+
+  <div class="container">
+    <div class="logo-wrapper">
+      <img src="YP_logo.jpg" alt="YP Automotive">
+    </div>
+    <div class="divider"></div>
+    <div class="tagline">Coming Soon</div>
+  </div>
+
+  <div class="footer">
+    <span>&copy; 2026 YP Automotive</span>
+    <a href="mailto:contact@ypautomotive.com">contact@ypautomotive.com</a>
+  </div>
+
+</body>
+</html>
