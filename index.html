@@ -4,24 +4,25 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>YP Automotive — Prishtinë</title>
+<meta name="description" content="Renault Clio Intens GT-Line 2019 · 1.5 dCi Automatik · Full Option · €11,700 · I doganuar RKS · Prishtinë">
 <link rel="icon" href="favicon.ico" type="image/x-icon">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
-<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@200;300;400;500;600;700&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@200;300;400;500;600;700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
   *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
   :root {
-    --bg: #0a0a0a;
-    --bg-card: #111111;
-    --bg-elevated: #181818;
-    --border: #1e1e1e;
-    --silver-light: #c8c8c8;
-    --silver-mid: #7a7a7a;
+    --bg: #050505;
+    --bg-card: #0e0e0e;
+    --bg-elevated: #161616;
+    --border: #1c1c1c;
+    --border-light: #262626;
+    --silver-light: #d4d4d4;
+    --silver: #a8a8a8;
+    --silver-mid: #707070;
     --silver-dark: #3a3a3a;
-    --accent: #c0392b;
-    --accent-hover: #e74c3c;
-    --green: #27ae60;
-    --gold: #f0c040;
+    --green: #25d366;
+    --green-dark: #1ea952;
   }
 
   html { scroll-behavior: smooth; }
@@ -32,48 +33,90 @@
     color: var(--silver-light);
     line-height: 1.6;
     -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
   }
 
-  /* ============ HEADER ============ */
+  /* Page-wide subtle grain */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 200;
+    opacity: 0.03;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+
+  /* ============ HEADER (LARGE LOGO) ============ */
   header {
     position: fixed;
     top: 0;
     left: 0;
     right: 0;
     z-index: 1000;
-    background: rgba(10,10,10,0.95);
-    backdrop-filter: blur(20px);
+    background: rgba(5,5,5,0.92);
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
     border-bottom: 1px solid var(--border);
+    transition: padding 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   }
 
   .header-brand {
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 20px 32px 14px;
+    padding: 28px 32px 20px;
     border-bottom: 1px solid rgba(255,255,255,0.04);
+    transition: padding 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   }
 
-  .header-logo { height: 48px; mix-blend-mode: screen; cursor: pointer; }
+  .header-logo {
+    height: 110px;
+    mix-blend-mode: screen;
+    cursor: pointer;
+    transition: height 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    filter: drop-shadow(0 0 30px rgba(255,255,255,0.05));
+  }
+
+  /* Compress header on scroll */
+  header.scrolled .header-brand { padding: 12px 32px 8px; }
+  header.scrolled .header-logo { height: 56px; }
 
   .header-nav-bar {
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 32px;
-    padding: 10px 32px;
+    gap: 28px;
+    padding: 12px 32px;
   }
 
-  .header-nav-bar a {
+  .header-nav-bar a:not(.header-cta) {
     color: var(--silver-mid);
     text-decoration: none;
-    font-size: 0.75rem;
-    font-weight: 400;
-    letter-spacing: 0.1em;
+    font-family: 'Outfit', sans-serif;
+    font-size: 0.74rem;
+    font-weight: 500;
+    letter-spacing: 0.18em;
     text-transform: uppercase;
     transition: color 0.3s;
+    position: relative;
   }
-  .header-nav-bar a:hover { color: var(--silver-light); }
+  .header-nav-bar a:not(.header-cta):hover { color: var(--silver-light); }
+
+  .header-nav-bar a:not(.header-cta)::after {
+    content: '';
+    position: absolute;
+    bottom: -4px;
+    left: 50%;
+    width: 0;
+    height: 1px;
+    background: var(--silver-light);
+    transition: width 0.3s, left 0.3s;
+  }
+  .header-nav-bar a:not(.header-cta):hover::after {
+    width: 100%;
+    left: 0;
+  }
 
   .nav-dot {
     width: 3px;
@@ -88,176 +131,374 @@
     gap: 8px;
     background: var(--green);
     color: #fff;
-    padding: 8px 18px;
+    padding: 9px 18px;
     border-radius: 6px;
-    font-size: 0.75rem;
-    font-weight: 500;
+    font-size: 0.74rem;
+    font-weight: 600;
     text-decoration: none;
-    letter-spacing: 0.03em;
-    transition: background 0.3s, transform 0.2s;
+    letter-spacing: 0.05em;
+    transition: background 0.3s, transform 0.2s, box-shadow 0.3s;
   }
-  .header-cta:hover { background: #2ecc71; transform: translateY(-1px); }
+  .header-cta:hover {
+    background: var(--green-dark);
+    transform: translateY(-1px);
+    box-shadow: 0 6px 20px rgba(37,211,102,0.3);
+  }
   .header-cta svg { width: 14px; height: 14px; fill: #fff; }
 
   /* ============ HERO ============ */
   .hero {
-    margin-top: 106px;
+    margin-top: 200px;
     position: relative;
-    height: 70vh;
-    min-height: 480px;
+    height: calc(100vh - 200px);
+    min-height: 540px;
     overflow: hidden;
-    display: flex;
-    align-items: flex-end;
     cursor: pointer;
   }
 
-  .hero img {
+  .hero-image-wrap {
     position: absolute;
     inset: 0;
+    overflow: hidden;
+  }
+
+  .hero-image-wrap img {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    object-position: center 40%;
+    object-position: center 45%;
+    animation: kenburns 18s ease-in-out infinite alternate;
+  }
+
+  @keyframes kenburns {
+    0%   { transform: scale(1.02); }
+    100% { transform: scale(1.12); }
   }
 
   .hero::after {
     content: '';
     position: absolute;
     inset: 0;
-    background: linear-gradient(180deg, rgba(10,10,10,0.1) 0%, rgba(10,10,10,0.85) 100%);
+    background: linear-gradient(180deg,
+      rgba(5,5,5,0.3) 0%,
+      rgba(5,5,5,0.1) 30%,
+      rgba(5,5,5,0.6) 75%,
+      rgba(5,5,5,0.95) 100%);
+    pointer-events: none;
   }
 
   .hero-content {
-    position: relative;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
     z-index: 2;
-    padding: 48px;
-    width: 100%;
+    padding: 0 56px 56px;
+    display: flex;
+    align-items: end;
+    justify-content: space-between;
+    gap: 32px;
   }
 
+  .hero-text { max-width: 700px; }
+
   .hero-badge {
-    display: inline-block;
-    background: var(--green);
-    color: #fff;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(37,211,102,0.15);
+    border: 1px solid rgba(37,211,102,0.4);
+    color: var(--green);
     font-size: 0.7rem;
     font-weight: 600;
-    letter-spacing: 0.1em;
+    letter-spacing: 0.15em;
     text-transform: uppercase;
-    padding: 6px 14px;
+    padding: 7px 14px;
     border-radius: 4px;
-    margin-bottom: 16px;
+    margin-bottom: 20px;
+    backdrop-filter: blur(10px);
+  }
+
+  .hero-badge::before {
+    content: '';
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--green);
+    box-shadow: 0 0 10px var(--green);
+    animation: pulse 2s ease-in-out infinite;
+  }
+
+  @keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.4; }
   }
 
   .hero-title {
     font-family: 'Outfit', sans-serif;
-    font-size: clamp(2rem, 5vw, 3.6rem);
+    font-size: clamp(2.2rem, 5.5vw, 4.4rem);
     font-weight: 700;
     color: #fff;
-    line-height: 1.1;
-    margin-bottom: 8px;
+    line-height: 1.05;
+    margin-bottom: 12px;
+    letter-spacing: -0.02em;
   }
 
   .hero-sub {
     font-size: 1.05rem;
-    color: var(--silver-mid);
+    color: var(--silver);
     font-weight: 300;
-    margin-bottom: 24px;
+    letter-spacing: 0.02em;
+  }
+
+  .hero-price-block {
+    text-align: right;
+    flex-shrink: 0;
+  }
+
+  .hero-price-label {
+    font-family: 'Outfit', sans-serif;
+    font-size: 0.7rem;
+    font-weight: 500;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--silver-mid);
+    margin-bottom: 8px;
   }
 
   .hero-price {
     font-family: 'Outfit', sans-serif;
-    font-size: 2.2rem;
+    font-size: clamp(2.2rem, 4.5vw, 3.4rem);
     font-weight: 600;
     color: #fff;
+    letter-spacing: -0.01em;
   }
 
   .hero-scroll {
     position: absolute;
-    bottom: 20px;
-    right: 48px;
-    z-index: 2;
+    bottom: 24px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 3;
     color: var(--silver-mid);
-    font-size: 0.72rem;
-    letter-spacing: 0.1em;
+    font-family: 'Outfit', sans-serif;
+    font-size: 0.65rem;
+    letter-spacing: 0.3em;
     text-transform: uppercase;
     display: flex;
+    flex-direction: column;
     align-items: center;
-    gap: 8px;
+    gap: 10px;
   }
 
-  .hero-scroll .arrow {
-    width: 20px;
-    height: 20px;
-    border-right: 1.5px solid var(--silver-mid);
-    border-bottom: 1.5px solid var(--silver-mid);
-    transform: rotate(45deg);
-    animation: bounce 2s infinite;
+  .hero-scroll .line {
+    width: 1px;
+    height: 32px;
+    background: linear-gradient(180deg, transparent, var(--silver-mid));
+    animation: scrollLine 2.5s ease-in-out infinite;
   }
 
-  @keyframes bounce {
-    0%, 100% { transform: rotate(45deg) translateY(0); }
-    50% { transform: rotate(45deg) translateY(6px); }
+  @keyframes scrollLine {
+    0% { transform: scaleY(0); transform-origin: top; }
+    50% { transform: scaleY(1); transform-origin: top; }
+    51% { transform: scaleY(1); transform-origin: bottom; }
+    100% { transform: scaleY(0); transform-origin: bottom; }
+  }
+
+  /* ============ STATS BAR ============ */
+  .stats {
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+    padding: 36px 32px;
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 16px;
+    background: var(--bg-card);
+  }
+
+  .stat {
+    text-align: center;
+    padding: 0 12px;
+    border-right: 1px solid var(--border);
+    position: relative;
+  }
+  .stat:last-child { border-right: none; }
+
+  .stat-value {
+    font-family: 'Outfit', sans-serif;
+    font-size: 1.6rem;
+    font-weight: 600;
+    color: #fff;
+    line-height: 1;
+    margin-bottom: 6px;
+    letter-spacing: -0.01em;
+  }
+
+  .stat-label {
+    font-size: 0.7rem;
+    color: var(--silver-mid);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+
+  /* ============ SECTION HEADERS ============ */
+  .section-header {
+    text-align: center;
+    padding: 80px 32px 40px;
+    position: relative;
+  }
+
+  .section-eyebrow {
+    font-family: 'Outfit', sans-serif;
+    font-size: 0.7rem;
+    font-weight: 500;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--silver-dark);
+    margin-bottom: 12px;
+  }
+
+  .section-title {
+    font-family: 'Outfit', sans-serif;
+    font-size: clamp(1.6rem, 3vw, 2.2rem);
+    font-weight: 600;
+    color: #fff;
+    letter-spacing: -0.01em;
+  }
+
+  .section-divider {
+    width: 40px;
+    height: 1px;
+    background: var(--silver-dark);
+    margin: 24px auto 0;
   }
 
   /* ============ GALLERY ============ */
-  .gallery-section {
-    padding: 64px 32px;
-  }
-
-  .section-label {
-    font-family: 'Outfit', sans-serif;
-    font-size: 0.72rem;
-    font-weight: 500;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    color: var(--silver-dark);
-    margin-bottom: 24px;
-  }
+  .gallery-section { padding: 0 24px 80px; }
 
   .gallery-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-    gap: 8px;
-  }
-
-  .gallery-grid img {
-    width: 100%;
-    aspect-ratio: 4/3;
-    object-fit: cover;
-    border-radius: 6px;
-    cursor: pointer;
-    transition: transform 0.3s, opacity 0.3s;
-  }
-
-  .gallery-grid img:hover {
-    transform: scale(1.02);
-    opacity: 0.88;
-  }
-
-  /* ============ SPECS + FEATURES ============ */
-  .details-section {
-    padding: 64px 32px;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 48px;
-    max-width: 1200px;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 12px;
+    max-width: 1400px;
     margin: 0 auto;
   }
 
-  .specs-card, .features-card {
+  .gallery-item {
+    position: relative;
+    aspect-ratio: 4/3;
+    overflow: hidden;
+    border-radius: 8px;
+    cursor: pointer;
     background: var(--bg-card);
+  }
+
+  .gallery-item:nth-child(1) {
+    grid-column: span 2;
+    grid-row: span 2;
+    aspect-ratio: 1/1;
+  }
+
+  .gallery-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .gallery-item:hover img {
+    transform: scale(1.06);
+  }
+
+  .gallery-item-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, transparent 60%, rgba(0,0,0,0.7) 100%);
+    opacity: 0;
+    transition: opacity 0.4s;
+    display: flex;
+    align-items: end;
+    justify-content: space-between;
+    padding: 20px;
+  }
+
+  .gallery-item:hover .gallery-item-overlay { opacity: 1; }
+
+  .gallery-item-num {
+    color: #fff;
+    font-family: 'Outfit', sans-serif;
+    font-size: 0.85rem;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+  }
+
+  .gallery-item-icon {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.15);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255,255,255,0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .gallery-item-icon svg {
+    width: 16px;
+    height: 16px;
+    fill: #fff;
+  }
+
+  /* ============ DETAILS (SPECS + FEATURES) ============ */
+  .details-section {
+    padding: 0 32px 80px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+    max-width: 1400px;
+    margin: 0 auto;
+  }
+
+  .details-card {
+    background: linear-gradient(180deg, var(--bg-card) 0%, rgba(14,14,14,0.5) 100%);
     border: 1px solid var(--border);
-    border-radius: 12px;
-    padding: 40px;
+    border-radius: 14px;
+    padding: 44px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .details-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.08), transparent);
   }
 
   .card-title {
     font-family: 'Outfit', sans-serif;
-    font-size: 1.1rem;
+    font-size: 1.05rem;
     font-weight: 600;
     color: #fff;
-    margin-bottom: 32px;
-    padding-bottom: 16px;
+    margin-bottom: 28px;
+    padding-bottom: 18px;
     border-bottom: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    letter-spacing: 0.02em;
+  }
+
+  .card-title::before {
+    content: '';
+    width: 4px;
+    height: 16px;
+    background: var(--silver);
+    border-radius: 2px;
   }
 
   .spec-row {
@@ -267,7 +508,6 @@
     padding: 14px 0;
     border-bottom: 1px solid rgba(255,255,255,0.04);
   }
-
   .spec-row:last-child { border-bottom: none; }
 
   .spec-label {
@@ -282,36 +522,92 @@
     text-align: right;
   }
 
-  .feature-tag {
-    display: inline-block;
-    background: var(--bg-elevated);
-    border: 1px solid var(--border);
-    color: var(--silver-light);
-    font-size: 0.82rem;
-    padding: 8px 16px;
-    border-radius: 20px;
-    margin: 4px;
+  .spec-value.highlight {
+    color: var(--green);
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
   }
 
-  /* ============ CTA SECTION ============ */
+  .feature-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .feature-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: var(--bg-elevated);
+    border: 1px solid var(--border-light);
+    color: var(--silver-light);
+    font-size: 0.82rem;
+    padding: 8px 14px;
+    border-radius: 20px;
+    transition: border-color 0.3s, transform 0.2s;
+  }
+
+  .feature-tag:hover {
+    border-color: var(--silver-mid);
+    transform: translateY(-1px);
+  }
+
+  .feature-tag::before {
+    content: '✓';
+    color: var(--green);
+    font-size: 0.7rem;
+    font-weight: 700;
+  }
+
+  /* ============ CTA ============ */
   .cta-section {
-    padding: 80px 32px;
+    padding: 100px 32px;
     text-align: center;
+    position: relative;
+    overflow: hidden;
     border-top: 1px solid var(--border);
   }
 
+  .cta-bg {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    opacity: 0.15;
+  }
+
+  .cta-bg img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: blur(20px);
+  }
+
+  .cta-bg::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse at center, transparent 0%, var(--bg) 80%);
+  }
+
+  .cta-content { position: relative; z-index: 1; }
+
   .cta-title {
     font-family: 'Outfit', sans-serif;
-    font-size: clamp(1.6rem, 3vw, 2.4rem);
+    font-size: clamp(1.8rem, 3.5vw, 2.8rem);
     font-weight: 600;
     color: #fff;
-    margin-bottom: 12px;
+    margin-bottom: 16px;
+    letter-spacing: -0.01em;
   }
 
   .cta-sub {
-    color: var(--silver-mid);
-    font-size: 1rem;
-    margin-bottom: 36px;
+    color: var(--silver);
+    font-size: 1.05rem;
+    margin-bottom: 40px;
+    max-width: 540px;
+    margin-left: auto;
+    margin-right: auto;
   }
 
   .cta-buttons {
@@ -328,10 +624,12 @@
     padding: 16px 32px;
     border-radius: 10px;
     font-size: 0.95rem;
-    font-weight: 500;
+    font-weight: 600;
     text-decoration: none;
-    transition: transform 0.2s, box-shadow 0.3s;
+    transition: transform 0.2s, box-shadow 0.3s, background 0.3s;
     cursor: pointer;
+    border: none;
+    font-family: inherit;
   }
 
   .btn:hover { transform: translateY(-2px); }
@@ -340,9 +638,12 @@
   .btn-whatsapp {
     background: var(--green);
     color: #fff;
-    box-shadow: 0 4px 24px rgba(39,174,96,0.25);
+    box-shadow: 0 4px 24px rgba(37,211,102,0.25);
   }
-  .btn-whatsapp:hover { box-shadow: 0 8px 32px rgba(39,174,96,0.35); }
+  .btn-whatsapp:hover {
+    background: var(--green-dark);
+    box-shadow: 0 8px 32px rgba(37,211,102,0.4);
+  }
   .btn-whatsapp svg { fill: #fff; }
 
   .btn-facebook {
@@ -350,43 +651,101 @@
     color: #fff;
     box-shadow: 0 4px 24px rgba(24,119,242,0.2);
   }
-  .btn-facebook:hover { box-shadow: 0 8px 32px rgba(24,119,242,0.3); }
+  .btn-facebook:hover {
+    background: #1864c7;
+    box-shadow: 0 8px 32px rgba(24,119,242,0.35);
+  }
   .btn-facebook svg { fill: #fff; }
+
+  /* ============ FLOATING WHATSAPP ============ */
+  .float-whatsapp {
+    position: fixed;
+    bottom: 24px;
+    right: 24px;
+    z-index: 998;
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    background: var(--green);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 6px 24px rgba(37,211,102,0.4);
+    transition: transform 0.3s, box-shadow 0.3s;
+    text-decoration: none;
+  }
+
+  .float-whatsapp:hover {
+    transform: scale(1.08);
+    box-shadow: 0 8px 32px rgba(37,211,102,0.55);
+  }
+
+  .float-whatsapp::before {
+    content: '';
+    position: absolute;
+    inset: -4px;
+    border-radius: 50%;
+    border: 2px solid var(--green);
+    animation: ripple 2s ease-out infinite;
+    pointer-events: none;
+  }
+
+  @keyframes ripple {
+    0% { transform: scale(1); opacity: 0.6; }
+    100% { transform: scale(1.5); opacity: 0; }
+  }
+
+  .float-whatsapp svg { width: 28px; height: 28px; fill: #fff; }
 
   /* ============ FOOTER ============ */
   footer {
     border-top: 1px solid var(--border);
-    padding: 36px 32px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    flex-wrap: wrap;
-    gap: 16px;
+    padding: 40px 32px 32px;
+    text-align: center;
   }
 
-  .footer-left {
-    display: flex;
-    align-items: center;
-    gap: 24px;
-    font-size: 0.75rem;
+  .footer-logo {
+    height: 38px;
+    mix-blend-mode: screen;
+    margin-bottom: 16px;
+    opacity: 0.7;
+  }
+
+  .footer-text {
+    font-size: 0.78rem;
     color: var(--silver-dark);
+    margin-bottom: 18px;
+    letter-spacing: 0.05em;
   }
 
-  .footer-left img { height: 24px; mix-blend-mode: screen; }
+  .footer-text a {
+    color: var(--silver-mid);
+    text-decoration: none;
+    transition: color 0.3s;
+  }
+  .footer-text a:hover { color: var(--silver-light); }
 
   .footer-socials {
     display: flex;
-    gap: 16px;
+    gap: 14px;
+    justify-content: center;
   }
 
   .footer-socials a {
+    width: 36px;
+    height: 36px;
+    border: 1px solid var(--border-light);
+    border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
-    transition: transform 0.3s;
+    transition: border-color 0.3s, transform 0.3s;
   }
-  .footer-socials a:hover { transform: scale(1.15); }
-  .footer-socials a svg { width: 18px; height: 18px; fill: var(--silver-dark); transition: fill 0.3s; }
+  .footer-socials a:hover {
+    border-color: var(--silver-mid);
+    transform: translateY(-2px);
+  }
+  .footer-socials a svg { width: 14px; height: 14px; fill: var(--silver-mid); transition: fill 0.3s; }
   .footer-socials a:hover svg { fill: var(--silver-light); }
 
   /* ============ LIGHTBOX ============ */
@@ -395,15 +754,15 @@
     position: fixed;
     inset: 0;
     z-index: 9999;
-    background: rgba(0,0,0,0.96);
+    background: rgba(0,0,0,0.97);
     align-items: center;
     justify-content: center;
+    backdrop-filter: blur(8px);
   }
-
   .lightbox.active { display: flex; }
 
   .lightbox img {
-    max-width: 90vw;
+    max-width: 92vw;
     max-height: 90vh;
     object-fit: contain;
     border-radius: 4px;
@@ -412,73 +771,118 @@
   .lightbox-close {
     position: absolute;
     top: 24px;
-    right: 32px;
-    background: none;
-    border: none;
-    color: var(--silver-mid);
-    font-size: 2rem;
+    right: 28px;
+    background: rgba(255,255,255,0.08);
+    border: 1px solid rgba(255,255,255,0.12);
+    color: #fff;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    font-size: 1.4rem;
     cursor: pointer;
     z-index: 10;
-    transition: color 0.3s;
+    transition: background 0.3s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
-  .lightbox-close:hover { color: #fff; }
+  .lightbox-close:hover { background: rgba(255,255,255,0.18); }
 
   .lightbox-nav {
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
     background: rgba(255,255,255,0.08);
-    border: 1px solid rgba(255,255,255,0.1);
+    border: 1px solid rgba(255,255,255,0.12);
     color: #fff;
-    width: 48px;
-    height: 48px;
+    width: 52px;
+    height: 52px;
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
     cursor: pointer;
-    font-size: 1.2rem;
+    font-size: 1.4rem;
     transition: background 0.3s;
   }
-  .lightbox-nav:hover { background: rgba(255,255,255,0.15); }
-  .lightbox-prev { left: 24px; }
-  .lightbox-next { right: 24px; }
+  .lightbox-nav:hover { background: rgba(255,255,255,0.18); }
+  .lightbox-prev { left: 28px; }
+  .lightbox-next { right: 28px; }
 
   .lightbox-counter {
     position: absolute;
-    bottom: 24px;
+    bottom: 28px;
     left: 50%;
     transform: translateX(-50%);
-    color: var(--silver-mid);
+    color: var(--silver);
+    font-family: 'Outfit', sans-serif;
     font-size: 0.85rem;
+    letter-spacing: 0.1em;
+    background: rgba(0,0,0,0.5);
+    padding: 8px 16px;
+    border-radius: 20px;
+    border: 1px solid rgba(255,255,255,0.08);
+  }
+
+  /* ============ SCROLL REVEAL ============ */
+  .reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
   }
 
   /* ============ RESPONSIVE ============ */
-  @media (max-width: 768px) {
-    .details-section { grid-template-columns: 1fr; gap: 24px; }
-    .hero { height: 55vh; min-height: 380px; }
-    .hero-content { padding: 28px; }
-    .hero-scroll { display: none; }
-    .hero-title { font-size: 1.8rem; }
-    .hero-price { font-size: 1.6rem; }
-    .gallery-grid { grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 6px; }
-    header { padding: 0; }
-    .header-brand { padding: 14px 16px 10px; }
-    .header-logo { height: 38px; }
-    .header-nav-bar { padding: 8px 16px; gap: 20px; }
-    .header-nav-bar a:not(.header-cta) { font-size: 0.7rem; }
+  @media (max-width: 900px) {
+    .stats { grid-template-columns: repeat(3, 1fr); gap: 8px 16px; row-gap: 24px; }
+    .stat:nth-child(3) { border-right: none; }
+    .gallery-grid { grid-template-columns: repeat(2, 1fr); }
+    .gallery-item:nth-child(1) { grid-column: span 2; grid-row: span 1; aspect-ratio: 16/10; }
+    .details-section { grid-template-columns: 1fr; }
+  }
+
+  @media (max-width: 600px) {
+    .header-brand { padding: 16px 16px 10px; }
+    .header-logo { height: 72px; }
+    header.scrolled .header-brand { padding: 8px 16px 6px; }
+    header.scrolled .header-logo { height: 42px; }
+    .header-nav-bar { padding: 8px 16px; gap: 16px; }
+    .header-nav-bar a:not(.header-cta) { font-size: 0.66rem; letter-spacing: 0.12em; }
+    .header-cta { padding: 7px 12px; font-size: 0.7rem; }
     .nav-dot { display: none; }
-    .gallery-section, .cta-section { padding: 40px 16px; }
-    .details-section { padding: 40px 16px; }
-    .specs-card, .features-card { padding: 24px; }
-    footer { padding: 24px 16px; justify-content: center; text-align: center; }
+
+    .hero { margin-top: 148px; height: calc(100vh - 148px); min-height: 460px; }
+    .hero-content {
+      padding: 0 24px 28px;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 20px;
+    }
+    .hero-price-block { text-align: left; }
+    .hero-scroll { display: none; }
+
+    .stats { padding: 24px 16px; }
+    .stat-value { font-size: 1.2rem; }
+    .stat-label { font-size: 0.62rem; letter-spacing: 0.08em; }
+
+    .section-header { padding: 56px 16px 28px; }
+    .gallery-section { padding: 0 16px 56px; }
+    .details-section { padding: 0 16px 56px; }
+    .details-card { padding: 28px; }
+    .cta-section { padding: 64px 16px; }
+
+    .float-whatsapp { width: 52px; height: 52px; bottom: 18px; right: 18px; }
+    .float-whatsapp svg { width: 24px; height: 24px; }
   }
 </style>
 </head>
 <body>
 
 <!-- HEADER -->
-<header>
+<header id="header">
   <div class="header-brand">
     <img src="YP_logo.png" alt="YP Automotive" class="header-logo" onclick="window.scrollTo({top:0,behavior:'smooth'})">
   </div>
@@ -487,7 +891,7 @@
     <span class="nav-dot"></span>
     <a href="#specs">Detajet</a>
     <span class="nav-dot"></span>
-    <a href="https://wa.me/38346187316" target="_blank" class="header-cta">
+    <a href="https://wa.me/38346187316" target="_blank" rel="noopener" class="header-cta">
       <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
       Na Kontakto
     </a>
@@ -496,42 +900,85 @@
 
 <!-- HERO -->
 <div class="hero" onclick="openLightbox(0)">
-  <img src="22.jpg" alt="Renault Clio Intens GT-Line">
+  <div class="hero-image-wrap">
+    <img src="3.jpg" alt="Renault Clio Intens GT-Line" id="heroImg">
+  </div>
   <div class="hero-content">
-    <div class="hero-badge">✓ I Doganuar RKS</div>
-    <h1 class="hero-title">Renault Clio Intens<br>GT-Line</h1>
-    <p class="hero-sub">2019 · 1.5 dCi · Automatik · Full Option</p>
-    <div class="hero-price">€11,700</div>
+    <div class="hero-text">
+      <div class="hero-badge">I Doganuar RKS</div>
+      <h1 class="hero-title">Renault Clio Intens GT-Line</h1>
+      <p class="hero-sub">Full Option · 1.5 dCi · Automatik · 110,xxx km</p>
+    </div>
+    <div class="hero-price-block">
+      <div class="hero-price-label">Çmimi</div>
+      <div class="hero-price">€11,700</div>
+    </div>
   </div>
   <div class="hero-scroll">
-    Shiko më shumë <span class="arrow"></span>
+    <span>Scroll</span>
+    <span class="line"></span>
   </div>
 </div>
 
+<!-- STATS BAR -->
+<section class="stats reveal">
+  <div class="stat">
+    <div class="stat-value">2019</div>
+    <div class="stat-label">Viti</div>
+  </div>
+  <div class="stat">
+    <div class="stat-value">110k</div>
+    <div class="stat-label">Kilometra</div>
+  </div>
+  <div class="stat">
+    <div class="stat-value">1.5 dCi</div>
+    <div class="stat-label">Motorri</div>
+  </div>
+  <div class="stat">
+    <div class="stat-value">Auto</div>
+    <div class="stat-label">Ndërruesi</div>
+  </div>
+  <div class="stat">
+    <div class="stat-value">Naftë</div>
+    <div class="stat-label">Karburanti</div>
+  </div>
+</section>
+
 <!-- GALLERY -->
-<section class="gallery-section" id="gallery">
-  <div class="section-label">Galeria e Fotove — 17 foto</div>
+<div class="section-header reveal" id="gallery">
+  <div class="section-eyebrow">Galeria</div>
+  <h2 class="section-title">17 Foto në Detaj</h2>
+  <div class="section-divider"></div>
+</div>
+
+<section class="gallery-section reveal">
   <div class="gallery-grid" id="galleryGrid"></div>
 </section>
 
-<!-- SPECS + FEATURES -->
-<section class="details-section" id="specs">
-  <div class="specs-card">
-    <div class="card-title">Specifikat Kryesore</div>
+<!-- DETAILS -->
+<div class="section-header reveal" id="specs">
+  <div class="section-eyebrow">Detajet</div>
+  <h2 class="section-title">Specifikat & Pajisjet</h2>
+  <div class="section-divider"></div>
+</div>
+
+<section class="details-section reveal">
+  <div class="details-card">
+    <div class="card-title">Specifikat Teknike</div>
     <div class="spec-row"><span class="spec-label">Marka</span><span class="spec-value">Renault</span></div>
     <div class="spec-row"><span class="spec-label">Modeli</span><span class="spec-value">Clio Intens GT-Line</span></div>
-    <div class="spec-row"><span class="spec-label">Viti</span><span class="spec-value">11/2019</span></div>
+    <div class="spec-row"><span class="spec-label">Viti i Prodhimit</span><span class="spec-value">11/2019</span></div>
     <div class="spec-row"><span class="spec-label">Motorri</span><span class="spec-value">1.5 dCi (Naftë)</span></div>
     <div class="spec-row"><span class="spec-label">Ndërruesi</span><span class="spec-value">Automatik</span></div>
     <div class="spec-row"><span class="spec-label">Kilometra</span><span class="spec-value">110,xxx km</span></div>
-    <div class="spec-row"><span class="spec-label">Statusi</span><span class="spec-value" style="color:var(--green)">I Doganuar RKS ✓</span></div>
-    <div class="spec-row"><span class="spec-label">Servisi</span><span class="spec-value">Sapo kryer (Vaj + Filtera)</span></div>
+    <div class="spec-row"><span class="spec-label">Statusi</span><span class="spec-value highlight">✓ I Doganuar RKS</span></div>
+    <div class="spec-row"><span class="spec-label">Servisi</span><span class="spec-value">Sapo Kryer</span></div>
     <div class="spec-row"><span class="spec-label">Lokacioni</span><span class="spec-value">Prishtinë</span></div>
   </div>
 
-  <div class="features-card">
+  <div class="details-card">
     <div class="card-title">Opsionet & Pajisjet</div>
-    <div>
+    <div class="feature-list">
       <span class="feature-tag">Panoramë</span>
       <span class="feature-tag">Bose Sound System</span>
       <span class="feature-tag">Kamera 360°</span>
@@ -539,9 +986,10 @@
       <span class="feature-tag">Apple CarPlay</span>
       <span class="feature-tag">Android Auto</span>
       <span class="feature-tag">Karrige me Nxemje</span>
-      <span class="feature-tag">Keyless Go (2 Çelësa)</span>
+      <span class="feature-tag">Keyless Go</span>
+      <span class="feature-tag">2 Çelësa</span>
       <span class="feature-tag">Full LED</span>
-      <span class="feature-tag">Goma M+S 100% të reja</span>
+      <span class="feature-tag">Goma M+S të reja</span>
       <span class="feature-tag">Fellne 17" GT-Line</span>
       <span class="feature-tag">Tempomat</span>
       <span class="feature-tag">Limitator Shpejtësie</span>
@@ -556,35 +1004,43 @@
 
 <!-- CTA -->
 <section class="cta-section" id="contact">
-  <h2 class="cta-title">Të interesuar? Na kontaktoni.</h2>
-  <p class="cta-sub">E gatshme për çdo lloj kontrolli. Nuk kërkon asnjë investim shtesë.</p>
-  <div class="cta-buttons">
-    <a href="https://wa.me/38346187316" target="_blank" class="btn btn-whatsapp">
-      <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-      WhatsApp
-    </a>
-    <a href="https://www.facebook.com/profile.php?id=61588924271504" target="_blank" class="btn btn-facebook">
-      <svg viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
-      Facebook
-    </a>
+  <div class="cta-bg"><img src="3.jpg" alt=""></div>
+  <div class="cta-content reveal">
+    <h2 class="cta-title">E gatshme. E doganuar. E Juaja.</h2>
+    <p class="cta-sub">Nuk kërkon asnjë investim shtesë — vetëm vozitje. Na kontaktoni për takim ose më shumë informata.</p>
+    <div class="cta-buttons">
+      <a href="https://wa.me/38346187316" target="_blank" rel="noopener" class="btn btn-whatsapp">
+        <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        WhatsApp
+      </a>
+      <a href="https://www.facebook.com/profile.php?id=61588924271504" target="_blank" rel="noopener" class="btn btn-facebook">
+        <svg viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+        Facebook
+      </a>
+    </div>
   </div>
 </section>
 
 <!-- FOOTER -->
 <footer>
-  <div class="footer-left">
-    <img src="YP_logo.png" alt="YP Automotive">
-    <span>&copy; 2026 YP Automotive · Prishtinë</span>
+  <img src="YP_logo.png" alt="YP Automotive" class="footer-logo">
+  <div class="footer-text">
+    &copy; 2026 YP Automotive · Prishtinë · <a href="mailto:contact@ypautomotive.com">contact@ypautomotive.com</a>
   </div>
   <div class="footer-socials">
-    <a href="https://wa.me/38346187316" target="_blank" aria-label="WhatsApp">
+    <a href="https://wa.me/38346187316" target="_blank" rel="noopener" aria-label="WhatsApp">
       <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
     </a>
-    <a href="https://www.facebook.com/profile.php?id=61588924271504" target="_blank" aria-label="Facebook">
+    <a href="https://www.facebook.com/profile.php?id=61588924271504" target="_blank" rel="noopener" aria-label="Facebook">
       <svg viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
     </a>
   </div>
 </footer>
+
+<!-- FLOATING WHATSAPP -->
+<a href="https://wa.me/38346187316" target="_blank" rel="noopener" class="float-whatsapp" aria-label="WhatsApp">
+  <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+</a>
 
 <!-- LIGHTBOX -->
 <div class="lightbox" id="lightbox">
@@ -598,17 +1054,24 @@
 <script>
   // Image list
   const images = [];
-  for (let i = 1; i <= 17; i++) images.push('' + i + '.jpg');
+  for (let i = 1; i <= 17; i++) images.push(i + '.jpg');
 
   // Build gallery grid
   const grid = document.getElementById('galleryGrid');
   images.forEach((src, i) => {
-    const img = document.createElement('img');
-    img.src = src;
-    img.alt = 'Renault Clio foto ' + (i + 1);
-    img.loading = 'lazy';
-    img.onclick = () => openLightbox(i);
-    grid.appendChild(img);
+    const item = document.createElement('div');
+    item.className = 'gallery-item';
+    item.onclick = () => openLightbox(i);
+    item.innerHTML = `
+      <img src="${src}" alt="Renault Clio foto ${i + 1}" loading="lazy">
+      <div class="gallery-item-overlay">
+        <div class="gallery-item-num">${String(i + 1).padStart(2, '0')} / 17</div>
+        <div class="gallery-item-icon">
+          <svg viewBox="0 0 24 24"><path d="M15 3l2.3 2.3-2.89 2.87 1.42 1.42L18.7 6.7 21 9V3zM3 9l2.3-2.3 2.87 2.89 1.42-1.42L6.7 5.3 9 3H3zm6 12l-2.3-2.3 2.89-2.87-1.42-1.42L5.3 17.3 3 15v6zm12-6l-2.3 2.3-2.87-2.89-1.42 1.42 2.89 2.87L15 21h6z"/></svg>
+        </div>
+      </div>
+    `;
+    grid.appendChild(item);
   });
 
   // Lightbox
@@ -623,23 +1086,19 @@
     lightbox.classList.add('active');
     document.body.style.overflow = 'hidden';
   }
-
   function closeLightbox() {
     lightbox.classList.remove('active');
     document.body.style.overflow = '';
   }
-
   function navLightbox(dir) {
     currentImg = (currentImg + dir + images.length) % images.length;
     updateLightbox();
   }
-
   function updateLightbox() {
     lightboxImg.src = images[currentImg];
     lightboxCounter.textContent = (currentImg + 1) + ' / ' + images.length;
   }
 
-  // Keyboard nav
   document.addEventListener('keydown', e => {
     if (!lightbox.classList.contains('active')) return;
     if (e.key === 'Escape') closeLightbox();
@@ -647,10 +1106,28 @@
     if (e.key === 'ArrowRight') navLightbox(1);
   });
 
-  // Click backdrop to close
   lightbox.addEventListener('click', e => {
     if (e.target === lightbox) closeLightbox();
   });
+
+  // Header shrink on scroll
+  const header = document.getElementById('header');
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 80) header.classList.add('scrolled');
+    else header.classList.remove('scrolled');
+  });
+
+  // Scroll reveal
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 </script>
 
 </body>
