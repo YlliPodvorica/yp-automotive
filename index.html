@@ -229,6 +229,16 @@
     animation: pulse 2s ease-in-out infinite;
   }
 
+  .hero-badge.sold {
+    background: rgba(220,38,38,0.18);
+    border-color: rgba(220,38,38,0.5);
+    color: #ff6b6b;
+  }
+  .hero-badge.sold::before {
+    background: #dc2626;
+    box-shadow: 0 0 10px #dc2626;
+  }
+
   @keyframes pulse {
     0%, 100% { opacity: 1; }
     50% { opacity: 0.4; }
@@ -896,7 +906,6 @@
       Na Kontakto
     </a>
   </div>
- <!-- Meta Pixel Code --><script>!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js'); fbq('init', '1620684485882961'); fbq('track', 'PageView');</script><noscript> <img height="1" width="1" src="https://www.facebook.com/tr?id=1620684485882961&ev=PageView&noscript=1"/></noscript><!-- End Meta Pixel Code -->
 </header>
 
 <!-- HERO -->
@@ -906,13 +915,9 @@
   </div>
   <div class="hero-content">
     <div class="hero-text">
-      <div class="hero-badge">I Doganuar RKS</div>
+      <div class="hero-badge sold">I Shitur</div>
       <h1 class="hero-title">Renault Clio Intens GT-Line</h1>
       <p class="hero-sub">Full Option · 1.5 dCi · Automatik · 110,xxx km</p>
-    </div>
-    <div class="hero-price-block">
-      <div class="hero-price-label">Çmimi</div>
-      <div class="hero-price">€10,500</div>
     </div>
   </div>
   <div class="hero-scroll">
@@ -948,7 +953,7 @@
 <!-- GALLERY -->
 <div class="section-header reveal" id="gallery">
   <div class="section-eyebrow">Galeria</div>
-  <h2 class="section-title">17 Foto në Detaje</h2>
+  <h2 class="section-title">17 Foto në Detaj</h2>
   <div class="section-divider"></div>
 </div>
 
@@ -959,7 +964,7 @@
 <!-- DETAILS -->
 <div class="section-header reveal" id="specs">
   <div class="section-eyebrow">Detajet</div>
-  <h2 class="section-title">Specifikat</h2>
+  <h2 class="section-title">Specifikat & Pajisjet</h2>
   <div class="section-divider"></div>
 </div>
 
@@ -972,13 +977,13 @@
     <div class="spec-row"><span class="spec-label">Motorri</span><span class="spec-value">1.5 dCi (Naftë)</span></div>
     <div class="spec-row"><span class="spec-label">Ndërruesi</span><span class="spec-value">Automatik</span></div>
     <div class="spec-row"><span class="spec-label">Kilometra</span><span class="spec-value">110,xxx km</span></div>
-    <div class="spec-row"><span class="spec-label">Statusi</span><span class="spec-value highlight">✓ I Doganuar RKS</span></div>
+    <div class="spec-row"><span class="spec-label">Statusi</span><span class="spec-value" style="color:#ff6b6b">✕ I Shitur</span></div>
     <div class="spec-row"><span class="spec-label">Servisi</span><span class="spec-value">Sapo Kryer</span></div>
     <div class="spec-row"><span class="spec-label">Lokacioni</span><span class="spec-value">Prishtinë</span></div>
   </div>
 
   <div class="details-card">
-    <div class="card-title">Opsionet</div>
+    <div class="card-title">Opsionet & Pajisjet</div>
     <div class="feature-list">
       <span class="feature-tag">Panoramë</span>
       <span class="feature-tag">Bose Sound System</span>
@@ -1007,8 +1012,8 @@
 <section class="cta-section" id="contact">
   <div class="cta-bg"><img src="3.jpg" alt=""></div>
   <div class="cta-content reveal">
-    <h2 class="cta-title">E gatshme. E doganuar. E Juaja.</h2>
-    <p class="cta-sub">Nuk kërkon asnjë investim shtesë — vetëm vozitje. Na kontaktoni për takim ose më shumë informata.</p>
+    <h2 class="cta-title">Kjo Veturë është Shitur</h2>
+    <p class="cta-sub">Vetura të reja po vijnë së shpejti. Na ndiqni në rrjete sociale ose na kontaktoni për kërkesa specifike.</p>
     <div class="cta-buttons">
       <a href="https://wa.me/38346187316" target="_blank" rel="noopener" class="btn btn-whatsapp">
         <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
@@ -1026,7 +1031,7 @@
 <footer>
   <img src="YP_logo.png" alt="YP Automotive" class="footer-logo">
   <div class="footer-text">
-    &copy; 2026 YP Automotive · Prishtinë · <a href="mailto:contact@ypautomotive.com">contact@yp-automotive.com</a>
+    &copy; 2026 YP Automotive · Prishtinë · <a href="mailto:contact@ypautomotive.com">contact@ypautomotive.com</a>
   </div>
   <div class="footer-socials">
     <a href="https://wa.me/38346187316" target="_blank" rel="noopener" aria-label="WhatsApp">
