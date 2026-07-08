@@ -1,0 +1,214 @@
+/* ========== YP AUTOMOTIVE — SHARED STYLES ========== */
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+  --bg: #050505;
+  --bg-card: #0e0e0e;
+  --bg-elevated: #161616;
+  --border: #1c1c1c;
+  --border-light: #262626;
+  --silver-light: #d4d4d4;
+  --silver: #a8a8a8;
+  --silver-mid: #707070;
+  --silver-dark: #3a3a3a;
+  --green: #25d366;
+  --green-dark: #1ea952;
+  --red: #dc2626;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'DM Sans', sans-serif;
+  background: var(--bg);
+  color: var(--silver-light);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 200;
+  opacity: 0.03;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+a { text-decoration: none; color: inherit; }
+
+/* ========== HEADER ========== */
+header {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 1000;
+  background: rgba(5,5,5,0.92);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border-bottom: 1px solid var(--border);
+}
+
+.header-brand {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px 32px 16px;
+  border-bottom: 1px solid rgba(255,255,255,0.04);
+  transition: padding 0.4s cubic-bezier(0.4,0,0.2,1);
+}
+
+.header-logo {
+  height: 92px;
+  mix-blend-mode: screen;
+  cursor: pointer;
+  transition: height 0.4s cubic-bezier(0.4,0,0.2,1);
+  filter: drop-shadow(0 0 30px rgba(255,255,255,0.05));
+}
+
+header.scrolled .header-brand { padding: 12px 32px 8px; }
+header.scrolled .header-logo { height: 52px; }
+
+.header-nav-bar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 28px;
+  padding: 12px 32px;
+}
+
+.header-nav-bar a:not(.header-cta) {
+  color: var(--silver-mid);
+  font-family: 'Outfit', sans-serif;
+  font-size: 0.74rem;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  transition: color 0.3s;
+  position: relative;
+}
+.header-nav-bar a:not(.header-cta):hover { color: var(--silver-light); }
+.header-nav-bar a:not(.header-cta)::after {
+  content: '';
+  position: absolute;
+  bottom: -4px; left: 50%;
+  width: 0; height: 1px;
+  background: var(--silver-light);
+  transition: width 0.3s, left 0.3s;
+}
+.header-nav-bar a:not(.header-cta):hover::after { width: 100%; left: 0; }
+
+.nav-dot { width: 3px; height: 3px; border-radius: 50%; background: var(--silver-dark); }
+
+.header-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--green);
+  color: #fff;
+  padding: 9px 18px;
+  border-radius: 6px;
+  font-size: 0.74rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  transition: background 0.3s, transform 0.2s, box-shadow 0.3s;
+}
+.header-cta:hover { background: var(--green-dark); transform: translateY(-1px); box-shadow: 0 6px 20px rgba(37,211,102,0.3); }
+.header-cta svg { width: 14px; height: 14px; fill: #fff; }
+
+/* ========== FLOATING WHATSAPP ========== */
+.float-whatsapp {
+  position: fixed;
+  bottom: 24px; right: 24px;
+  z-index: 998;
+  width: 56px; height: 56px;
+  border-radius: 50%;
+  background: var(--green);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 6px 24px rgba(37,211,102,0.4);
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+.float-whatsapp:hover { transform: scale(1.08); box-shadow: 0 8px 32px rgba(37,211,102,0.55); }
+.float-whatsapp::before {
+  content: '';
+  position: absolute;
+  inset: -4px;
+  border-radius: 50%;
+  border: 2px solid var(--green);
+  animation: ripple 2s ease-out infinite;
+  pointer-events: none;
+}
+@keyframes ripple {
+  0% { transform: scale(1); opacity: 0.6; }
+  100% { transform: scale(1.5); opacity: 0; }
+}
+.float-whatsapp svg { width: 28px; height: 28px; fill: #fff; }
+
+/* ========== FOOTER ========== */
+footer {
+  border-top: 1px solid var(--border);
+  padding: 40px 32px 32px;
+  text-align: center;
+}
+.footer-logo { height: 38px; mix-blend-mode: screen; margin-bottom: 16px; opacity: 0.7; }
+.footer-text { font-size: 0.78rem; color: var(--silver-dark); margin-bottom: 18px; letter-spacing: 0.05em; }
+.footer-text a { color: var(--silver-mid); transition: color 0.3s; }
+.footer-text a:hover { color: var(--silver-light); }
+.footer-socials { display: flex; gap: 14px; justify-content: center; }
+.footer-socials a {
+  width: 36px; height: 36px;
+  border: 1px solid var(--border-light);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: border-color 0.3s, transform 0.3s;
+}
+.footer-socials a:hover { border-color: var(--silver-mid); transform: translateY(-2px); }
+.footer-socials a svg { width: 14px; height: 14px; fill: var(--silver-mid); transition: fill 0.3s; }
+.footer-socials a:hover svg { fill: var(--silver-light); }
+
+/* ========== SCROLL REVEAL ========== */
+.reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.8s cubic-bezier(0.16,1,0.3,1), transform 0.8s cubic-bezier(0.16,1,0.3,1);
+}
+.reveal.visible { opacity: 1; transform: translateY(0); }
+
+/* ========== SECTION HEADERS ========== */
+.section-header { text-align: center; padding: 80px 32px 40px; }
+.section-eyebrow {
+  font-family: 'Outfit', sans-serif;
+  font-size: 0.7rem;
+  font-weight: 500;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--silver-dark);
+  margin-bottom: 12px;
+}
+.section-title {
+  font-family: 'Outfit', sans-serif;
+  font-size: clamp(1.6rem, 3vw, 2.2rem);
+  font-weight: 600;
+  color: #fff;
+  letter-spacing: -0.01em;
+}
+.section-divider { width: 40px; height: 1px; background: var(--silver-dark); margin: 24px auto 0; }
+
+@media (max-width: 600px) {
+  .header-brand { padding: 16px 16px 10px; }
+  .header-logo { height: 64px; }
+  header.scrolled .header-brand { padding: 8px 16px 6px; }
+  header.scrolled .header-logo { height: 40px; }
+  .header-nav-bar { padding: 8px 16px; gap: 16px; }
+  .header-nav-bar a:not(.header-cta) { font-size: 0.66rem; letter-spacing: 0.12em; }
+  .header-cta { padding: 7px 12px; font-size: 0.7rem; }
+  .nav-dot { display: none; }
+  .section-header { padding: 56px 16px 28px; }
+  .float-whatsapp { width: 52px; height: 52px; bottom: 18px; right: 18px; }
+  .float-whatsapp svg { width: 24px; height: 24px; }
+}

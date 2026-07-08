@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="sq">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Renault Clio Intens GT-Line — YP Automotive</title>
+<meta name="description" content="Renault Clio Intens GT-Line 2019 · 1.5 dCi Automatik · I Shitur · Prishtinë">
+<link rel="icon" href="favicon.ico" type="image/x-icon">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@200;300;400;500;600;700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+<style>
+  .back-link {
+    position: fixed;
+    top: 158px; left: 24px;
+    z-index: 999;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(14,14,14,0.85);
+    backdrop-filter: blur(12px);
+    border: 1px solid var(--border-light);
+    color: var(--silver);
+    font-size: 0.78rem;
+    font-weight: 500;
+    letter-spacing: 0.05em;
+    padding: 9px 16px;
+    border-radius: 8px;
+    transition: color 0.3s, border-color 0.3s, transform 0.2s;
+  }
+  .back-link:hover { color: #fff; border-color: var(--silver-mid); transform: translateX(-2px); }
+  .back-link svg { width: 14px; height: 14px; fill: currentColor; }
+
+  .hero {
+    margin-top: 172px;
+    position: relative;
+    height: calc(100vh - 172px);
+    min-height: 520px;
+    overflow: hidden;
+    cursor: pointer;
+  }
+  .hero-image-wrap { position: absolute; inset: 0; overflow: hidden; }
+  .hero-image-wrap img {
+    width: 100%; height: 100%;
+    object-fit: cover; object-position: center 50%;
+    animation: kenburns 18s ease-in-out infinite alternate;
+  }
+  @keyframes kenburns { 0% { transform: scale(1.02); } 100% { transform: scale(1.12); } }
+  .hero::after {
+    content: '';
+    position: absolute; inset: 0;
+    background: linear-gradient(180deg, rgba(5,5,5,0.3) 0%, rgba(5,5,5,0.1) 30%, rgba(5,5,5,0.6) 75%, rgba(5,5,5,0.95) 100%);
+    pointer-events: none;
+  }
+  .hero-content {
+    position: absolute; bottom: 0; left: 0; right: 0;
+    z-index: 2;
+    padding: 0 56px 56px;
+    display: flex; align-items: end; justify-content: space-between; gap: 32px;
+  }
+  .hero-text { max-width: 700px; }
+  .hero-badge {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: rgba(37,211,102,0.15);
+    border: 1px solid rgba(37,211,102,0.4);
+    color: var(--green);
+    font-size: 0.7rem; font-weight: 600;
+    letter-spacing: 0.15em; text-transform: uppercase;
+    padding: 7px 14px; border-radius: 4px;
+    margin-bottom: 20px; backdrop-filter: blur(10px);
+  }
+  .hero-badge::before {
+    content: ''; width: 6px; height: 6px; border-radius: 50%;
+    background: var(--green); box-shadow: 0 0 10px var(--green);
+    animation: pulse 2s ease-in-out infinite;
+  }
+  .hero-badge.sold { background: rgba(220,38,38,0.18); border-color: rgba(220,38,38,0.5); color: #ff6b6b; }
+  .hero-badge.sold::before { background: var(--red); box-shadow: 0 0 10px var(--red); }
+  @keyframes pulse { 0%,100% { opacity: 1; } 50% { opacity: 0.4; } }
+  .hero-title {
+    font-family: 'Outfit', sans-serif;
+    font-size: clamp(2.2rem, 5.5vw, 4.4rem);
+    font-weight: 700; color: #fff;
+    line-height: 1.05; margin-bottom: 12px; letter-spacing: -0.02em;
+  }
+  .hero-sub { font-size: 1.05rem; color: var(--silver); font-weight: 300; letter-spacing: 0.02em; }
+  .hero-price-block { text-align: right; flex-shrink: 0; }
+  .hero-price-label {
+    font-family: 'Outfit', sans-serif; font-size: 0.7rem; font-weight: 500;
+    letter-spacing: 0.2em; text-transform: uppercase; color: var(--silver-mid); margin-bottom: 8px;
+  }
+  .hero-price { font-family: 'Outfit', sans-serif; font-size: clamp(2.2rem, 4.5vw, 3.4rem); font-weight: 600; color: #fff; letter-spacing: -0.01em; }
+
+  .stats {
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+    padding: 36px 32px;
+    display: grid; grid-template-columns: repeat(5, 1fr); gap: 16px;
+    background: var(--bg-card);
+  }
+  .stat { text-align: center; padding: 0 12px; border-right: 1px solid var(--border); }
+  .stat:last-child { border-right: none; }
+  .stat-value { font-family: 'Outfit', sans-serif; font-size: 1.6rem; font-weight: 600; color: #fff; line-height: 1; margin-bottom: 6px; letter-spacing: -0.01em; }
+  .stat-label { font-size: 0.7rem; color: var(--silver-mid); letter-spacing: 0.12em; text-transform: uppercase; }
+
+  .gallery-section { padding: 0 24px 80px; }
+  .gallery-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; max-width: 1400px; margin: 0 auto; }
+  .gallery-item {
+    position: relative; aspect-ratio: 4/3; overflow: hidden;
+    border-radius: 8px; cursor: pointer; background: var(--bg-card);
+  }
+  .gallery-item:nth-child(1) { grid-column: span 2; grid-row: span 2; aspect-ratio: 1/1; }
+  .gallery-item img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.7s cubic-bezier(0.4,0,0.2,1); }
+  .gallery-item:hover img { transform: scale(1.06); }
+  .gallery-item-overlay {
+    position: absolute; inset: 0;
+    background: linear-gradient(180deg, transparent 60%, rgba(0,0,0,0.7) 100%);
+    opacity: 0; transition: opacity 0.4s;
+    display: flex; align-items: end; justify-content: space-between; padding: 20px;
+  }
+  .gallery-item:hover .gallery-item-overlay { opacity: 1; }
+  .gallery-item-num { color: #fff; font-family: 'Outfit', sans-serif; font-size: 0.85rem; font-weight: 500; letter-spacing: 0.1em; }
+  .gallery-item-icon {
+    width: 36px; height: 36px; border-radius: 50%;
+    background: rgba(255,255,255,0.15); backdrop-filter: blur(10px);
+    border: 1px solid rgba(255,255,255,0.2);
+    display: flex; align-items: center; justify-content: center;
+  }
+  .gallery-item-icon svg { width: 16px; height: 16px; fill: #fff; }
+
+  .details-section {
+    padding: 0 32px 80px;
+    display: grid; grid-template-columns: 1fr 1fr; gap: 24px;
+    max-width: 1400px; margin: 0 auto;
+  }
+  .details-card {
+    background: linear-gradient(180deg, var(--bg-card) 0%, rgba(14,14,14,0.5) 100%);
+    border: 1px solid var(--border); border-radius: 14px; padding: 44px;
+    position: relative; overflow: hidden;
+  }
+  .details-card::before {
+    content: ''; position: absolute; top: 0; left: 0; right: 0; height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.08), transparent);
+  }
+  .card-title {
+    font-family: 'Outfit', sans-serif; font-size: 1.05rem; font-weight: 600; color: #fff;
+    margin-bottom: 28px; padding-bottom: 18px; border-bottom: 1px solid var(--border);
+    display: flex; align-items: center; gap: 10px; letter-spacing: 0.02em;
+  }
+  .card-title::before { content: ''; width: 4px; height: 16px; background: var(--silver); border-radius: 2px; }
+  .spec-row { display: flex; justify-content: space-between; align-items: center; padding: 14px 0; border-bottom: 1px solid rgba(255,255,255,0.04); }
+  .spec-row:last-child { border-bottom: none; }
+  .spec-label { color: var(--silver-mid); font-size: 0.88rem; }
+  .spec-value { color: #fff; font-weight: 500; font-size: 0.92rem; text-align: right; }
+  .spec-value.highlight { color: var(--green); display: inline-flex; align-items: center; gap: 6px; }
+  .feature-list { display: flex; flex-wrap: wrap; gap: 8px; }
+  .feature-tag {
+    display: inline-flex; align-items: center; gap: 6px;
+    background: var(--bg-elevated); border: 1px solid var(--border-light);
+    color: var(--silver-light); font-size: 0.82rem; padding: 8px 14px;
+    border-radius: 20px; transition: border-color 0.3s, transform 0.2s;
+  }
+  .feature-tag:hover { border-color: var(--silver-mid); transform: translateY(-1px); }
+  .feature-tag::before { content: '✓'; color: var(--green); font-size: 0.7rem; font-weight: 700; }
+
+  .cta-section { padding: 100px 32px; text-align: center; position: relative; overflow: hidden; border-top: 1px solid var(--border); }
+  .cta-bg { position: absolute; inset: 0; z-index: 0; opacity: 0.15; }
+  .cta-bg img { width: 100%; height: 100%; object-fit: cover; filter: blur(20px); }
+  .cta-bg::after { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse at center, transparent 0%, var(--bg) 80%); }
+  .cta-content { position: relative; z-index: 1; }
+  .cta-title { font-family: 'Outfit', sans-serif; font-size: clamp(1.8rem, 3.5vw, 2.8rem); font-weight: 600; color: #fff; margin-bottom: 16px; letter-spacing: -0.01em; }
+  .cta-sub { color: var(--silver); font-size: 1.05rem; margin-bottom: 40px; max-width: 540px; margin-left: auto; margin-right: auto; }
+  .cta-buttons { display: flex; justify-content: center; gap: 16px; flex-wrap: wrap; }
+  .btn { display: inline-flex; align-items: center; gap: 10px; padding: 16px 32px; border-radius: 10px; font-size: 0.95rem; font-weight: 600; transition: transform 0.2s, box-shadow 0.3s, background 0.3s; cursor: pointer; }
+  .btn:hover { transform: translateY(-2px); }
+  .btn svg { width: 20px; height: 20px; }
+  .btn-whatsapp { background: var(--green); color: #fff; box-shadow: 0 4px 24px rgba(37,211,102,0.25); }
+  .btn-whatsapp:hover { background: var(--green-dark); box-shadow: 0 8px 32px rgba(37,211,102,0.4); }
+  .btn-whatsapp svg { fill: #fff; }
+  .btn-facebook { background: #1877f2; color: #fff; box-shadow: 0 4px 24px rgba(24,119,242,0.2); }
+  .btn-facebook:hover { background: #1864c7; box-shadow: 0 8px 32px rgba(24,119,242,0.35); }
+  .btn-facebook svg { fill: #fff; }
+
+  .lightbox { display: none; position: fixed; inset: 0; z-index: 9999; background: rgba(0,0,0,0.97); align-items: center; justify-content: center; backdrop-filter: blur(8px); }
+  .lightbox.active { display: flex; }
+  .lightbox img { max-width: 92vw; max-height: 90vh; object-fit: contain; border-radius: 4px; }
+  .lightbox-close { position: absolute; top: 24px; right: 28px; background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.12); color: #fff; width: 44px; height: 44px; border-radius: 50%; font-size: 1.4rem; cursor: pointer; z-index: 10; transition: background 0.3s; display: flex; align-items: center; justify-content: center; }
+  .lightbox-close:hover { background: rgba(255,255,255,0.18); }
+  .lightbox-nav { position: absolute; top: 50%; transform: translateY(-50%); background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.12); color: #fff; width: 52px; height: 52px; border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer; font-size: 1.4rem; transition: background 0.3s; }
+  .lightbox-nav:hover { background: rgba(255,255,255,0.18); }
+  .lightbox-prev { left: 28px; }
+  .lightbox-next { right: 28px; }
+  .lightbox-counter { position: absolute; bottom: 28px; left: 50%; transform: translateX(-50%); color: var(--silver); font-family: 'Outfit', sans-serif; font-size: 0.85rem; letter-spacing: 0.1em; background: rgba(0,0,0,0.5); padding: 8px 16px; border-radius: 20px; border: 1px solid rgba(255,255,255,0.08); }
+
+  @media (max-width: 900px) {
+    .stats { grid-template-columns: repeat(3, 1fr); gap: 8px 16px; row-gap: 24px; }
+    .stat:nth-child(3) { border-right: none; }
+    .gallery-grid { grid-template-columns: repeat(2, 1fr); }
+    .gallery-item:nth-child(1) { grid-column: span 2; grid-row: span 1; aspect-ratio: 16/10; }
+    .details-section { grid-template-columns: 1fr; }
+  }
+  @media (max-width: 600px) {
+    .back-link { top: 138px; left: 12px; padding: 8px 12px; font-size: 0.72rem; }
+    .hero { margin-top: 148px; height: calc(100vh - 148px); min-height: 440px; }
+    .hero-content { padding: 0 24px 28px; flex-direction: column; align-items: flex-start; gap: 20px; }
+    .hero-price-block { text-align: left; }
+    .stats { padding: 24px 16px; }
+    .stat-value { font-size: 1.2rem; }
+    .stat-label { font-size: 0.62rem; letter-spacing: 0.08em; }
+    .gallery-section { padding: 0 16px 56px; }
+    .details-section { padding: 0 16px 56px; }
+    .details-card { padding: 28px; }
+    .cta-section { padding: 64px 16px; }
+  }
+</style>
+</head>
+<body>
+
+<header id="header">
+  <div class="header-brand">
+    <img src="YP_logo.png" alt="YP Automotive" class="header-logo" onclick="location.href='index.html'">
+  </div>
+  <div class="header-nav-bar">
+    <a href="index.html">Koleksioni</a>
+    <span class="nav-dot"></span>
+    <a href="https://wa.me/38346187316" target="_blank" rel="noopener" class="header-cta">
+      <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+      Na Kontakto
+    </a>
+  </div>
+</header>
+
+<a href="index.html" class="back-link">
+  <svg viewBox="0 0 24 24"><path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z"/></svg>
+  Kthehu
+</a>
+
+<div class="hero" onclick="openLightbox(0)">
+  <div class="hero-image-wrap">
+    <img src="clio/3.jpg" alt="Renault Clio Intens GT-Line">
+  </div>
+  <div class="hero-content">
+    <div class="hero-text">
+      <div class="hero-badge sold">I Shitur</div>
+      <h1 class="hero-title">Renault Clio Intens GT-Line</h1>
+      <p class="hero-sub">Full Option · 1.5 dCi · Automatik · 110,xxx km</p>
+    </div>
+  </div>
+</div>
+
+<section class="stats reveal">
+  <div class="stat"><div class="stat-value">2019</div><div class="stat-label">Viti</div></div>
+  <div class="stat"><div class="stat-value">110k</div><div class="stat-label">Kilometra</div></div>
+  <div class="stat"><div class="stat-value">1.5 dCi</div><div class="stat-label">Motorri</div></div>
+  <div class="stat"><div class="stat-value">Auto</div><div class="stat-label">Ndërruesi</div></div>
+  <div class="stat"><div class="stat-value">Naftë</div><div class="stat-label">Karburanti</div></div>
+</section>
+
+<div class="section-header reveal" id="gallery">
+  <div class="section-eyebrow">Galeria</div>
+  <h2 class="section-title">17 Foto në Detaj</h2>
+  <div class="section-divider"></div>
+</div>
+
+<section class="gallery-section reveal">
+  <div class="gallery-grid" id="galleryGrid"></div>
+</section>
+
+<div class="section-header reveal" id="specs">
+  <div class="section-eyebrow">Detajet</div>
+  <h2 class="section-title">Specifikat & Pajisjet</h2>
+  <div class="section-divider"></div>
+</div>
+
+<section class="details-section reveal">
+  <div class="details-card">
+    <div class="card-title">Specifikat Teknike</div>
+    <div class="spec-row"><span class="spec-label">Marka</span><span class="spec-value">Renault</span></div>
+    <div class="spec-row"><span class="spec-label">Modeli</span><span class="spec-value">Clio Intens GT-Line</span></div>
+    <div class="spec-row"><span class="spec-label">Viti</span><span class="spec-value">11/2019</span></div>
+    <div class="spec-row"><span class="spec-label">Motorri</span><span class="spec-value">1.5 dCi (Naftë)</span></div>
+    <div class="spec-row"><span class="spec-label">Ndërruesi</span><span class="spec-value">Automatik</span></div>
+    <div class="spec-row"><span class="spec-label">Kilometra</span><span class="spec-value">110,xxx km</span></div>
+    <div class="spec-row"><span class="spec-label">Servisi</span><span class="spec-value">Sapo Kryer</span></div>
+    <div class="spec-row"><span class="spec-label">Statusi</span><span class="spec-value" style="color:#ff6b6b">✕ I Shitur</span></div>
+    <div class="spec-row"><span class="spec-label">Lokacioni</span><span class="spec-value">Prishtinë</span></div>
+  </div>
+
+  <div class="details-card">
+    <div class="card-title">Opsionet & Pajisjet</div>
+    <div class="feature-list">
+      <span class="feature-tag">Panoramë</span>
+      <span class="feature-tag">Bose Sound System</span>
+      <span class="feature-tag">Kamera 360°</span>
+      <span class="feature-tag">Reverse Camera</span>
+      <span class="feature-tag">Apple CarPlay</span>
+      <span class="feature-tag">Android Auto</span>
+      <span class="feature-tag">Karrige me Nxemje</span>
+      <span class="feature-tag">Keyless Go</span>
+      <span class="feature-tag">2 Çelësa</span>
+      <span class="feature-tag">Full LED</span>
+      <span class="feature-tag">Goma M+S të reja</span>
+      <span class="feature-tag">Fellne 17" GT-Line</span>
+      <span class="feature-tag">Tempomat</span>
+      <span class="feature-tag">Limitator Shpejtësie</span>
+      <span class="feature-tag">Klimatronik Dyzonale</span>
+      <span class="feature-tag">Pasqyra Elektrike</span>
+      <span class="feature-tag">Start/Stop</span>
+      <span class="feature-tag">Sensorë Parkimi</span>
+      <span class="feature-tag">Pedale Alumini RS</span>
+    </div>
+  </div>
+</section>
+
+<section class="cta-section" id="contact">
+  <div class="cta-bg"><img src="clio/3.jpg" alt=""></div>
+  <div class="cta-content reveal">
+    <h2 class="cta-title">Kjo Veturë është Shitur</h2>
+    <p class="cta-sub">Vetura të reja po vijnë së shpejti. Na ndiqni në rrjete sociale ose shikoni koleksionin tonë.</p>
+    <div class="cta-buttons">
+      <a href="https://wa.me/38346187316" target="_blank" rel="noopener" class="btn btn-whatsapp">
+        <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        WhatsApp
+      </a>
+      <a href="https://www.facebook.com/profile.php?id=61588924271504" target="_blank" rel="noopener" class="btn btn-facebook">
+        <svg viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+        Facebook
+      </a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <img src="YP_logo.png" alt="YP Automotive" class="footer-logo">
+  <div class="footer-text">&copy; 2026 YP Automotive · Prishtinë · <a href="mailto:contact@ypautomotive.com">contact@ypautomotive.com</a></div>
+  <div class="footer-socials">
+    <a href="https://wa.me/38346187316" target="_blank" rel="noopener" aria-label="WhatsApp"><svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg></a>
+    <a href="https://www.facebook.com/profile.php?id=61588924271504" target="_blank" rel="noopener" aria-label="Facebook"><svg viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg></a>
+  </div>
+</footer>
+
+<a href="https://wa.me/38346187316" target="_blank" rel="noopener" class="float-whatsapp" aria-label="WhatsApp">
+  <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+</a>
+
+<div class="lightbox" id="lightbox">
+  <button class="lightbox-close" onclick="closeLightbox()">&times;</button>
+  <button class="lightbox-nav lightbox-prev" onclick="navLightbox(-1)">&#8249;</button>
+  <img id="lightboxImg" src="" alt="">
+  <button class="lightbox-nav lightbox-next" onclick="navLightbox(1)">&#8250;</button>
+  <div class="lightbox-counter" id="lightboxCounter"></div>
+</div>
+
+<script>
+  const images = [];
+  for (let i = 1; i <= 17; i++) images.push('clio/' + i + '.jpg');
+
+  const grid = document.getElementById('galleryGrid');
+  images.forEach((src, i) => {
+    const item = document.createElement('div');
+    item.className = 'gallery-item';
+    item.onclick = () => openLightbox(i);
+    item.innerHTML = `
+      <img src="${src}" alt="Renault Clio foto ${i + 1}" loading="lazy">
+      <div class="gallery-item-overlay">
+        <div class="gallery-item-num">${String(i + 1).padStart(2, '0')} / 17</div>
+        <div class="gallery-item-icon"><svg viewBox="0 0 24 24"><path d="M15 3l2.3 2.3-2.89 2.87 1.42 1.42L18.7 6.7 21 9V3zM3 9l2.3-2.3 2.87 2.89 1.42-1.42L6.7 5.3 9 3H3zm6 12l-2.3-2.3 2.89-2.87-1.42-1.42L5.3 17.3 3 15v6zm12-6l-2.3 2.3-2.87-2.89-1.42 1.42 2.89 2.87L15 21h6z"/></svg></div>
+      </div>`;
+    grid.appendChild(item);
+  });
+
+  let currentImg = 0;
+  const lightbox = document.getElementById('lightbox');
+  const lightboxImg = document.getElementById('lightboxImg');
+  const lightboxCounter = document.getElementById('lightboxCounter');
+  function openLightbox(i) { currentImg = i; updateLightbox(); lightbox.classList.add('active'); document.body.style.overflow = 'hidden'; }
+  function closeLightbox() { lightbox.classList.remove('active'); document.body.style.overflow = ''; }
+  function navLightbox(d) { currentImg = (currentImg + d + images.length) % images.length; updateLightbox(); }
+  function updateLightbox() { lightboxImg.src = images[currentImg]; lightboxCounter.textContent = (currentImg + 1) + ' / ' + images.length; }
+  document.addEventListener('keydown', e => {
+    if (!lightbox.classList.contains('active')) return;
+    if (e.key === 'Escape') closeLightbox();
+    if (e.key === 'ArrowLeft') navLightbox(-1);
+    if (e.key === 'ArrowRight') navLightbox(1);
+  });
+  lightbox.addEventListener('click', e => { if (e.target === lightbox) closeLightbox(); });
+
+  const header = document.getElementById('header');
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 80) header.classList.add('scrolled'); else header.classList.remove('scrolled');
+  });
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => { if (entry.isIntersecting) { entry.target.classList.add('visible'); observer.unobserve(entry.target); } });
+  }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>
