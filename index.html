@@ -538,6 +538,140 @@
   .btn-whatsapp { background: var(--green); color: #fff; box-shadow: 0 4px 24px rgba(37,211,102,0.25); }
   .btn-whatsapp:hover { background: var(--green-dark); box-shadow: 0 10px 36px rgba(37,211,102,0.4); }
 
+  /* ============ M2 SPOTLIGHT ============ */
+  .m2-spotlight {
+    position: relative;
+    min-height: 640px;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+  }
+  .m2-slides { position: absolute; inset: 0; }
+  .m2-slide {
+    position: absolute; inset: 0;
+    width: 100%; height: 100%;
+    object-fit: cover;
+    object-position: center 62%;
+    opacity: 0;
+    transform: scale(1.06);
+    transition: opacity 1.6s ease, transform 7s linear;
+  }
+  .m2-slide.active { opacity: 1; transform: scale(1); }
+  .m2-overlay {
+    position: absolute; inset: 0;
+    background:
+      linear-gradient(90deg, rgba(5,5,5,0.92) 0%, rgba(5,5,5,0.55) 45%, rgba(5,5,5,0.25) 100%),
+      linear-gradient(180deg, rgba(5,5,5,0.5) 0%, transparent 30%, rgba(5,5,5,0.7) 100%);
+  }
+  .m2-content {
+    position: relative;
+    z-index: 2;
+    max-width: 1300px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 90px 48px;
+  }
+  .m2-eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    font-family: 'Outfit', sans-serif;
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.26em;
+    text-transform: uppercase;
+    color: #7cc0ff;
+    background: rgba(56,140,220,0.14);
+    border: 1px solid rgba(90,170,240,0.35);
+    padding: 8px 16px;
+    border-radius: 30px;
+    backdrop-filter: blur(8px);
+    margin-bottom: 26px;
+  }
+  .m2-dot {
+    width: 7px; height: 7px;
+    border-radius: 50%;
+    background: #7cc0ff;
+    box-shadow: 0 0 12px #7cc0ff;
+    animation: pulse 2s ease-in-out infinite;
+  }
+  .m2-title {
+    font-family: 'Outfit', sans-serif;
+    font-size: clamp(3rem, 8vw, 6rem);
+    font-weight: 800;
+    color: #fff;
+    line-height: 0.95;
+    letter-spacing: -0.03em;
+    margin-bottom: 12px;
+  }
+  .m2-sub {
+    font-family: 'Outfit', sans-serif;
+    font-size: clamp(0.95rem, 1.8vw, 1.15rem);
+    font-weight: 400;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--silver);
+    margin-bottom: 22px;
+  }
+  .m2-text {
+    color: var(--silver);
+    font-size: 1rem;
+    font-weight: 300;
+    line-height: 1.7;
+    max-width: 480px;
+    margin-bottom: 36px;
+  }
+  .m2-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: rgba(56,140,220,0.16);
+    border: 1px solid rgba(90,170,240,0.5);
+    backdrop-filter: blur(10px);
+    color: #9dd0ff;
+    font-family: 'Outfit', sans-serif;
+    font-size: 0.88rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    padding: 16px 32px;
+    border-radius: 10px;
+    transition: background 0.35s, border-color 0.35s, transform 0.25s, box-shadow 0.35s;
+  }
+  .m2-cta:hover {
+    background: rgba(56,140,220,0.28);
+    border-color: rgba(120,190,255,0.8);
+    transform: translateY(-2px);
+    box-shadow: 0 12px 40px rgba(40,110,190,0.35);
+  }
+  .m2-cta svg { width: 18px; height: 18px; fill: currentColor; }
+  .m2-progress {
+    display: flex;
+    gap: 8px;
+    margin-top: 44px;
+  }
+  .m2-bar {
+    width: 34px; height: 3px;
+    border-radius: 2px;
+    background: rgba(255,255,255,0.15);
+    overflow: hidden;
+    position: relative;
+    cursor: pointer;
+  }
+  .m2-bar::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: #7cc0ff;
+    transform: scaleX(0);
+    transform-origin: left;
+  }
+  .m2-bar.active::after {
+    transform: scaleX(1);
+    transition: transform 4.5s linear;
+  }
+
   /* ============ RESPONSIVE ============ */
   @media (max-width: 900px) {
     .counters { grid-template-columns: repeat(3, 1fr); padding: 40px 16px; gap: 12px; }
@@ -545,6 +679,10 @@
     .process-step:not(:last-child)::after { display: none; }
   }
   @media (max-width: 600px) {
+    .m2-spotlight { min-height: 560px; }
+    .m2-content { padding: 64px 20px; }
+    .m2-slide { object-position: center 70%; }
+    .m2-text { font-size: 0.92rem; }
     .home-hero { margin-top: 148px; min-height: calc(78vh - 148px); padding: 56px 20px 72px; }
     .collection { grid-template-columns: 1fr; gap: 20px; padding: 12px 16px 32px; }
     .why-grid { padding: 12px 16px 56px; }
@@ -694,6 +832,35 @@
 
   </section>
 </div>
+
+<!-- M2 SPOTLIGHT — COMING SOON -->
+<section class="m2-spotlight" id="m2">
+  <div class="m2-slides">
+    <img src="m2/2.jpg" class="m2-slide active" alt="BMW M2 F87">
+    <img src="m2/3.jpg" class="m2-slide" alt="BMW M2 F87">
+    <img src="m2/4.jpg" class="m2-slide" alt="BMW M2 F87">
+    <img src="m2/5.jpg" class="m2-slide" alt="BMW M2 F87">
+    <img src="m2/6.jpg" class="m2-slide" alt="BMW M2 F87 M Performance timon">
+  </div>
+  <div class="m2-overlay"></div>
+  <div class="m2-content reveal">
+    <div class="m2-eyebrow"><span class="m2-dot"></span>Së Shpejti në YP</div>
+    <h2 class="m2-title">BMW M2</h2>
+    <div class="m2-sub">F87 · Long Beach Blue · M Performance</div>
+    <p class="m2-text">Coupé-ja më e kërkuar e gjeneratës së saj po vjen në Prishtinë. Detajet e plota shpallen së shpejti — por ju mund ta rezervoni para të gjithëve.</p>
+    <a href="https://wa.me/38346187316?text=Përshëndetje,%20më%20intereson%20BMW%20M2%20që%20po%20vjen." target="_blank" rel="noopener" class="m2-cta">
+      <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/></svg>
+      Rezervoje i pari
+    </a>
+    <div class="m2-progress">
+      <span class="m2-bar" data-slide="0"></span>
+      <span class="m2-bar" data-slide="1"></span>
+      <span class="m2-bar" data-slide="2"></span>
+      <span class="m2-bar" data-slide="3"></span>
+      <span class="m2-bar" data-slide="4"></span>
+    </div>
+  </div>
+</section>
 
 <!-- COUNTERS -->
 <section class="counters reveal" id="counters">
@@ -867,6 +1034,34 @@
     });
   }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
   document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+  // ===== M2 SPOTLIGHT SLIDESHOW =====
+  const m2Slides = document.querySelectorAll('.m2-slide');
+  const m2Bars = document.querySelectorAll('.m2-bar');
+  let m2Idx = 0;
+  let m2Timer;
+
+  function m2Go(i) {
+    m2Slides[m2Idx].classList.remove('active');
+    m2Bars[m2Idx].classList.remove('active');
+    m2Idx = i % m2Slides.length;
+    m2Slides[m2Idx].classList.add('active');
+    // restart bar animation
+    void m2Bars[m2Idx].offsetWidth;
+    m2Bars[m2Idx].classList.add('active');
+  }
+  function m2Start() {
+    m2Bars[0].classList.add('active');
+    m2Timer = setInterval(() => m2Go(m2Idx + 1), 4500);
+  }
+  m2Bars.forEach(bar => {
+    bar.addEventListener('click', () => {
+      clearInterval(m2Timer);
+      m2Go(parseInt(bar.dataset.slide, 10));
+      m2Timer = setInterval(() => m2Go(m2Idx + 1), 4500);
+    });
+  });
+  m2Start();
 
   // ===== ANIMATED COUNTERS =====
   const counterObserver = new IntersectionObserver(entries => {
