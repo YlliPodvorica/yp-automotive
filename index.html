@@ -294,117 +294,6 @@
 
   .car-card.is-sold .car-card-image img { filter: grayscale(0.4) brightness(0.7); }
 
-  /* ===== TEASER (COMING SOON) CARD ===== */
-  .car-card.is-teaser { border-color: rgba(56,120,190,0.28); }
-  .car-card.is-teaser:hover { border-color: rgba(56,120,190,0.5); box-shadow: 0 24px 60px rgba(20,60,110,0.35); }
-  .car-card-badge.soon {
-    background: rgba(56,140,220,0.22);
-    border: 1px solid rgba(90,170,240,0.5);
-    color: #7cc0ff;
-  }
-  .car-card-badge.soon::before {
-    content: '';
-    width: 6px; height: 6px;
-    border-radius: 50%;
-    background: #7cc0ff;
-    box-shadow: 0 0 10px #7cc0ff;
-    animation: pulse 2s ease-in-out infinite;
-  }
-  /* Sweeping shine across the teaser image */
-  .teaser-shine {
-    position: absolute;
-    top: 0; left: -60%;
-    width: 40%; height: 100%;
-    background: linear-gradient(100deg, transparent, rgba(255,255,255,0.18), transparent);
-    transform: skewX(-18deg);
-    animation: teaserSweep 4.5s ease-in-out infinite;
-    z-index: 2;
-    pointer-events: none;
-  }
-  @keyframes teaserSweep {
-    0% { left: -60%; }
-    45%, 100% { left: 130%; }
-  }
-  .teaser-tag {
-    font-size: 0.72rem;
-    font-weight: 500;
-    color: #7cc0ff;
-    border: 1px solid rgba(90,170,240,0.35);
-    padding: 2px 8px;
-    border-radius: 5px;
-    vertical-align: middle;
-    margin-left: 4px;
-    letter-spacing: 0.05em;
-  }
-  .car-card-price.soon { color: #7cc0ff; font-size: 1.05rem; font-weight: 600; }
-  .car-card-arrow.soon { border-color: rgba(90,170,240,0.4); }
-  .car-card-arrow.soon svg { fill: #7cc0ff; width: 17px; height: 17px; }
-  .car-card.is-teaser:hover .car-card-arrow.soon { background: rgba(56,120,190,0.15); border-color: rgba(90,170,240,0.6); }
-
-  .car-card-body { padding: 24px 26px 26px; position: relative; z-index: 2; }
-  .car-card-title {
-    font-family: 'Outfit', sans-serif;
-    font-size: 1.3rem;
-    font-weight: 600;
-    color: #fff;
-    letter-spacing: -0.01em;
-    margin-bottom: 6px;
-  }
-  .car-card-sub { color: var(--silver-mid); font-size: 0.85rem; margin-bottom: 20px; }
-  .car-card-specs {
-    display: flex;
-    gap: 18px;
-    flex-wrap: wrap;
-    margin-bottom: 22px;
-    padding-bottom: 22px;
-    border-bottom: 1px solid var(--border);
-  }
-  .car-card-spec { display: flex; flex-direction: column; gap: 3px; }
-  .car-card-spec .label { font-size: 0.64rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--silver-dark); }
-  .car-card-spec .value { font-family: 'Outfit', sans-serif; font-size: 0.92rem; font-weight: 500; color: var(--silver-light); }
-  .car-card-footer { display: flex; align-items: center; justify-content: space-between; }
-  .car-card-price { font-family: 'Outfit', sans-serif; font-size: 1.5rem; font-weight: 600; color: #fff; }
-  .car-card-price.sold { color: var(--silver-mid); font-size: 1.1rem; }
-  .car-card-arrow {
-    width: 40px; height: 40px;
-    border: 1px solid var(--border-light);
-    border-radius: 50%;
-    display: flex; align-items: center; justify-content: center;
-    transition: background 0.3s, border-color 0.3s;
-  }
-  .car-card:hover .car-card-arrow { background: var(--bg-elevated); border-color: var(--silver-mid); }
-  .car-card-arrow svg { width: 16px; height: 16px; fill: var(--silver); transition: transform 0.3s; }
-  .car-card:hover .car-card-arrow svg { transform: translateX(2px); }
-
-  /* "Coming soon" ghost card */
-  .ghost-card {
-    border: 1px dashed var(--border-light);
-    border-radius: 18px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 14px;
-    min-height: 380px;
-    text-align: center;
-    padding: 40px;
-    transition: border-color 0.4s, background 0.4s;
-  }
-  .ghost-card:hover { border-color: var(--silver-dark); background: rgba(255,255,255,0.015); }
-  .ghost-card-icon {
-    width: 52px; height: 52px;
-    border: 1px solid var(--border-light);
-    border-radius: 50%;
-    display: flex; align-items: center; justify-content: center;
-    color: var(--silver-dark);
-    font-size: 1.5rem;
-    font-weight: 200;
-  }
-  .ghost-card-title { font-family: 'Outfit', sans-serif; font-size: 1rem; font-weight: 500; color: var(--silver-mid); }
-  .ghost-card-sub { font-size: 0.82rem; color: var(--silver-dark); max-width: 240px; }
-  .ghost-card a { color: var(--green); font-weight: 500; transition: opacity 0.3s; }
-  .ghost-card a:hover { opacity: 0.8; }
-
   /* ============ COUNTERS ============ */
   .counters {
     border-top: 1px solid var(--border);
@@ -562,8 +451,8 @@
   .m2-slides {
     position: relative;
     width: 100%;
-    aspect-ratio: 3/4;
-    max-height: 74vh;
+    aspect-ratio: 3/2;
+    max-height: 70vh;
     border-radius: 18px;
     overflow: hidden;
     border: 1px solid rgba(90,170,240,0.25);
@@ -628,6 +517,14 @@
     line-height: 1.7;
     max-width: 480px;
     margin-bottom: 36px;
+  }
+  .m2-price {
+    font-family: 'Outfit', sans-serif;
+    font-size: clamp(1.8rem, 3.4vw, 2.6rem);
+    font-weight: 700;
+    color: #fff;
+    letter-spacing: -0.02em;
+    margin-bottom: 26px;
   }
   .m2-cta {
     display: inline-flex;
@@ -725,13 +622,14 @@
 <!-- M2 SPOTLIGHT — COMING SOON -->
 <section class="m2-spotlight" id="m2">
   <div class="m2-content">
-    <div class="m2-eyebrow"><span class="m2-dot"></span>Së Shpejti në YP</div>
+    <div class="m2-eyebrow"><span class="m2-dot"></span>E Doganuar · RKS</div>
     <h2 class="m2-title">BMW M2</h2>
-    <div class="m2-sub">F87 · Long Beach Blue · M Performance</div>
-    <p class="m2-text">Coupé-ja më e kërkuar e gjeneratës së saj po vjen në Prishtinë. Detajet e plota shpallen së shpejti — por ju mund ta rezervoni para të gjithëve.</p>
-    <a href="https://wa.me/38346187316?text=Përshëndetje,%20më%20intereson%20BMW%20M2%20që%20po%20vjen." target="_blank" rel="noopener" class="m2-cta">
-      <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/></svg>
-      Rezervoje i pari
+    <div class="m2-sub">F87 · 370 Kuaj · DCT · Long Beach Blue</div>
+    <p class="m2-text">Coupé-ja më e kërkuar e gjeneratës së saj. Timon M Performance me shift lights, Harman Kardon, Apple CarPlay, filter K&amp;N dhe chargepipe i përmirësuar. E doganuar plotësisht me targa RKS.</p>
+    <div class="m2-price">€33,000</div>
+    <a href="m2.html" class="m2-cta">
+      Shiko Detajet
+      <svg viewBox="0 0 24 24"><path d="M13.025 1l-2.847 2.828 6.176 6.176h-16.354v3.992h16.354l-6.176 6.176 2.847 2.828 10.975-11z"/></svg>
     </a>
     <div class="m2-progress">
       <span class="m2-bar" data-slide="0"></span>
@@ -743,11 +641,11 @@
   </div>
   <div class="m2-frame">
     <div class="m2-slides">
-      <img src="m2/2.jpg" class="m2-slide active" alt="BMW M2 F87">
+      <img src="m2/1.jpg" class="m2-slide active" alt="BMW M2 F87">
       <img src="m2/3.jpg" class="m2-slide" alt="BMW M2 F87">
       <img src="m2/4.jpg" class="m2-slide" alt="BMW M2 F87">
-      <img src="m2/5.jpg" class="m2-slide" alt="BMW M2 F87">
-      <img src="m2/6.jpg" class="m2-slide" alt="BMW M2 F87 M Performance timon">
+      <img src="m2/7.jpg" class="m2-slide" alt="BMW M2 motorri me filter K&amp;N">
+      <img src="m2/8.jpg" class="m2-slide" alt="BMW M2 brendësia me karbon">
     </div>
   </div>
 </section>
@@ -771,6 +669,7 @@
 <!-- TICKER -->
 <div class="ticker" aria-hidden="true">
   <div class="ticker-track" id="tickerTrack">
+    <span class="ticker-item">Të Doganuara me RKS</span>
     <span class="ticker-item">Cilësi e Garantuar</span>
     <span class="ticker-item">Km të Verifikuara</span>
     <span class="ticker-item">Çmime Transparente</span>
@@ -798,15 +697,15 @@
       </div>
       <div class="car-card-body">
         <div class="car-card-title">BMW 320d M-Sport</div>
-        <div class="car-card-sub">F30 LCI · Pa Doganë</div>
+        <div class="car-card-sub">F30 LCI · M-Sport · E Doganuar</div>
         <div class="car-card-specs">
           <div class="car-card-spec"><span class="label">Viti</span><span class="value">2016</span></div>
-          <div class="car-card-spec"><span class="label">Km</span><span class="value">110k</span></div>
-          <div class="car-card-spec"><span class="label">Motorri</span><span class="value">2.0d</span></div>
+          <div class="car-card-spec"><span class="label">Km</span><span class="value">111k</span></div>
+          <div class="car-card-spec"><span class="label">Fuqia</span><span class="value">190 kuaj</span></div>
           <div class="car-card-spec"><span class="label">Ndërruesi</span><span class="value">Automatik</span></div>
         </div>
         <div class="car-card-footer">
-          <div class="car-card-price">€10,500</div>
+          <div class="car-card-price">€15,000</div>
           <div class="car-card-arrow">
             <svg viewBox="0 0 24 24"><path d="M13.025 1l-2.847 2.828 6.176 6.176h-16.354v3.992h16.354l-6.176 6.176 2.847 2.828 10.975-11z"/></svg>
           </div>
@@ -815,25 +714,24 @@
     </a>
 
     <!-- M2 — COMING SOON (TEASER) -->
-    <a href="https://wa.me/38346187316?text=Përshëndetje,%20më%20intereson%20BMW%20M2%20që%20po%20vjen." target="_blank" rel="noopener" class="car-card is-teaser reveal">
+    <a href="m2.html" class="car-card reveal">
       <div class="car-card-image">
-        <span class="car-card-badge soon">Së Shpejti</span>
-        <img src="m2/1.jpg" alt="BMW M2 F87" style="object-position:center 72%">
-        <div class="teaser-shine"></div>
-      </div>
+        <span class="car-card-badge available">Në Shitje</span>
+        <img src="m2/1.jpg" alt="BMW M2 F87">
+              </div>
       <div class="car-card-body">
-        <div class="car-card-title">BMW M2 <span class="teaser-tag">F87</span></div>
-        <div class="car-card-sub">Long Beach Blue · Po vjen së shpejti</div>
+        <div class="car-card-title">BMW M2</div>
+        <div class="car-card-sub">F87 · Long Beach Blue · E Doganuar</div>
         <div class="car-card-specs">
-          <div class="car-card-spec"><span class="label">Motorri</span><span class="value">3.0 · N55</span></div>
-          <div class="car-card-spec"><span class="label">Ngjyra</span><span class="value">LB Blue</span></div>
-          <div class="car-card-spec"><span class="label">Klasa</span><span class="value">M Coupé</span></div>
-          <div class="car-card-spec"><span class="label">Statusi</span><span class="value">Rezervo</span></div>
+          <div class="car-card-spec"><span class="label">Viti</span><span class="value">2017</span></div>
+          <div class="car-card-spec"><span class="label">Km</span><span class="value">169k</span></div>
+          <div class="car-card-spec"><span class="label">Fuqia</span><span class="value">370 kuaj</span></div>
+          <div class="car-card-spec"><span class="label">Ndërruesi</span><span class="value">DCT</span></div>
         </div>
         <div class="car-card-footer">
-          <div class="car-card-price soon">Rezervoje i pari</div>
-          <div class="car-card-arrow soon">
-            <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/></svg>
+          <div class="car-card-price">€33,000</div>
+          <div class="car-card-arrow">
+            <svg viewBox="0 0 24 24"><path d="M13.025 1l-2.847 2.828 6.176 6.176h-16.354v3.992h16.354l-6.176 6.176 2.847 2.828 10.975-11z"/></svg>
           </div>
         </div>
       </div>
