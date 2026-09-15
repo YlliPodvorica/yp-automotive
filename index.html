@@ -294,6 +294,42 @@
 
   .car-card.is-sold .car-card-image img { filter: grayscale(0.4) brightness(0.7); }
 
+  .car-card-body { padding: 24px 26px 26px; position: relative; z-index: 2; }
+  .car-card-title {
+    font-family: 'Outfit', sans-serif;
+    font-size: 1.3rem;
+    font-weight: 600;
+    color: #fff;
+    letter-spacing: -0.01em;
+    margin-bottom: 6px;
+  }
+  .car-card-sub { color: var(--silver-mid); font-size: 0.85rem; margin-bottom: 20px; }
+  .car-card-specs {
+    display: flex;
+    gap: 18px;
+    flex-wrap: wrap;
+    margin-bottom: 22px;
+    padding-bottom: 22px;
+    border-bottom: 1px solid var(--border);
+  }
+  .car-card-spec { display: flex; flex-direction: column; gap: 3px; }
+  .car-card-spec .label { font-size: 0.64rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--silver-dark); }
+  .car-card-spec .value { font-family: 'Outfit', sans-serif; font-size: 0.92rem; font-weight: 500; color: var(--silver-light); }
+  .car-card-footer { display: flex; align-items: center; justify-content: space-between; }
+  .car-card-price { font-family: 'Outfit', sans-serif; font-size: 1.5rem; font-weight: 600; color: #fff; }
+  .car-card-price.sold { color: var(--silver-mid); font-size: 1.1rem; }
+  .car-card-arrow {
+    width: 40px; height: 40px;
+    flex-shrink: 0;
+    border: 1px solid var(--border-light);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    transition: background 0.3s, border-color 0.3s;
+  }
+  .car-card:hover .car-card-arrow { background: var(--bg-elevated); border-color: var(--silver-mid); }
+  .car-card-arrow svg { width: 16px; height: 16px; fill: var(--silver); transition: transform 0.3s; }
+  .car-card:hover .car-card-arrow svg { transform: translateX(2px); }
+
   /* ============ COUNTERS ============ */
   .counters {
     border-top: 1px solid var(--border);
